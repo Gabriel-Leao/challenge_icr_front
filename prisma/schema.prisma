@@ -28,9 +28,9 @@ model categories {
 }
 
 model favorites {
-  id         String   @id
+  id         String   @id @default(uuid())
   created_at DateTime @default(now())
-  updated_at DateTime
+  updated_at DateTime @updatedAt
   user_id    String?
   book_id    String?
   books      books?   @relation(fields: [book_id], references: [id])

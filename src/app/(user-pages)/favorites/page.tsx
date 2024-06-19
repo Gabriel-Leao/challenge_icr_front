@@ -25,32 +25,33 @@ const getFavorites = async (userId: string) => {
   })
 }
 
-const removeAction = async (
-  userId: string,
-  favoriteId: string,
-  token: string
-) => {
+const removeAction = async (favoriteId: string) => {
   'use server'
-  const response = await fetch(
-    `${process.env.BACK_URL}/favorites/${userId}/${favoriteId}`,
-    {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${token}`
+  try {
+    if (!favoriteId) throw new Error('Favorito não encontrado')
+    const favorite = await prisma.favorites.findUnique({
+      where: {
+        id: favoriteId
       }
+    })
+
+    if (!favorite) {
+      throw new Error('Favorito não encontrado')
     }
-  )
-  const data = await response.json()
-  if (!data.error) {
-    redirect('/favorites')
-  } else {
+
+    await prisma.favorites.delete({
+      where: {
+        id: favoriteId
+      }
+    })
+  } catch (error) {
     redirect('/login')
   }
+  redirect('/favorites')
 }
 
 const Favorites = async () => {
   const account = await parseJwt(cookies().get('access_token')?.value)
-  const token = cookies().get('access_token')?.value || ''
   const favorites = await getFavorites((account && account.id) || '')
 
   return (
@@ -65,7 +66,7 @@ const Favorites = async () => {
               <form
                 action={async () => {
                   'use server'
-                  await removeAction(account.id, favoriteId, token)
+                  await removeAction(favoriteId)
                 }}>
                 <button
                   className="flex items-center pt-5 gap-3"

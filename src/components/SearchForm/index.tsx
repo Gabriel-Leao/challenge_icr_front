@@ -1,19 +1,28 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
+import SubmitButton from '@/components/SubmitButton'
+import SearchIcon from '@/components/Svgs/SearchIcon'
 
 const SearchForm = () => {
   const searchParams = useSearchParams()
   const searchTerm = searchParams.get('q') || ''
   return (
-    <form action="/books">
+    <form
+      action="/books"
+      className="flex items-center gap-2 mb-8 right-0 xl:absolute w-full xl:w-fit justify-center">
       <input
         type="text"
         name="q"
         defaultValue={searchTerm}
-        className="right-0 mb-8 rounded-xl border-white p-2 transition-colors delay-100 w-[519px] focus:bg-burntSienna focus:text-white xl:absolute xl:w-[330px] 2xl:w-[519px] max-w-full focus:placeholder-white"
+        className="rounded-xl border-white p-2 transition-colors delay-100 focus:bg-burntSienna focus:text-white xl:w-[280px] 2xl:w-[519px] w-[230px] focus:placeholder-white lg:w-full h-[46px] sm:w-full outline-none"
         placeholder="Pesquisar por título"
       />
+      <SubmitButton
+        type="submit"
+        className="bg-[#E25B45] p-2 rounded-2xl">
+        <SearchIcon />
+      </SubmitButton>
     </form>
   )
 }

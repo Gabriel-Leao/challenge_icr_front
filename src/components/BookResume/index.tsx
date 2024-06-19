@@ -3,6 +3,7 @@ import EmptyHeartIcon from '../Svgs/EmptyHeartIcon'
 import FillHeartIcon from '../Svgs/FillHeartIcon'
 import { Book } from '@/@types/book.interface'
 import { redirect } from 'next/navigation'
+import prisma from '../../../prisma/prisma'
 
 interface bookResumeProps {
   userId?: string
@@ -10,54 +11,68 @@ interface bookResumeProps {
   book: Book
 }
 
-const BookResume = ({ book, userId, token }: bookResumeProps) => {
-  const saveAction = async () => {
-    'use server'
-    if (userId) {
-      const response = await fetch(
-        `${process.env.BACK_URL}/favorites/${userId}`,
-        {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ bookId: book.id })
-        }
-      )
-      const data = await response.json()
-      if (!data.error) {
-        redirect('/books')
-      } else {
-        console.log(data)
-        redirect('/login')
-      }
-    } else {
-      redirect('login')
-    }
-  }
-
-  const removeAction = async () => {
-    'use server'
-    const response = await fetch(
-      `${process.env.BACK_URL}/favorites/${userId}/${book.favorites![0].id}`,
-      {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
-    )
-    const data = await response.json()
-    if (!data.error) {
-      redirect('/books')
-    } else {
-      redirect('/login')
-    }
-  }
-
+const BookResume = ({ book, userId }: bookResumeProps) => {
   const favorite =
     book.favorites?.length && book.favorites[0].book_id === book.id
+
+  const saveFavoriteAction = async () => {
+    'use server'
+    try {
+      if (!userId) {
+        throw new Error('Usuário não encontrado')
+      }
+      const user = await prisma.users.findUnique({ where: { id: userId } })
+      if (!user) {
+        throw new Error('Usuário não encontrado')
+      }
+      const oldFavorite = await prisma.favorites.findFirst({
+        where: {
+          book_id: book.id,
+          AND: {
+            user_id: userId
+          }
+        }
+      })
+      if (oldFavorite) {
+        throw new Error('Livro já favoritado')
+      }
+      await prisma.favorites.create({
+        data: {
+          user_id: userId,
+          book_id: book.id
+        }
+      })
+    } catch (error) {
+      redirect('/login')
+    }
+    redirect('/books')
+  }
+
+  const removeFavoriteAction = async () => {
+    'use server'
+    try {
+      const favoriteId = book.favorites?.length && book.favorites[0].id
+      if (!favoriteId) throw new Error('Favorito não encontrado')
+      const favorite = await prisma.favorites.findUnique({
+        where: {
+          id: favoriteId
+        }
+      })
+
+      if (!favorite) {
+        throw new Error('Favorito não encontrado')
+      }
+
+      await prisma.favorites.delete({
+        where: {
+          id: favoriteId
+        }
+      })
+    } catch (error) {
+      redirect('/login')
+    }
+    redirect('/books')
+  }
 
   return (
     <div className="relative mx-auto flex h-fit flex-col gap-y-4 sm:items-center lg:flex-row lg:items-start lg:gap-x-4 xl:gap-x-9">
@@ -74,7 +89,7 @@ const BookResume = ({ book, userId, token }: bookResumeProps) => {
             {book.description}
           </p>
         </div>
-        <form action={favorite ? removeAction : saveAction}>
+        <form action={favorite ? removeFavoriteAction : saveFavoriteAction}>
           <button
             className="bottom-0 flex items-center gap-3 mx-auto cursor-pointer lg:absolute"
             type="submit">
