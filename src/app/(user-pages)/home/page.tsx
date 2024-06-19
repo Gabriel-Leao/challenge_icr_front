@@ -76,7 +76,7 @@ const Home = async () => {
         </div>
       </div>
 
-      <div className="flex flex-col flex-wrap gap-y-20 py-12 md:flex-row md:justify-around md:py-28 2xl:gap-x-56">
+      <div className="grid place-content-center xl:grid-cols-3 gap-y-20 py-12 lg:grid-cols-2 md:py-28 2xl:gap-x-56">
         {books.length ? (
           books.map((book) => (
             <BookCover

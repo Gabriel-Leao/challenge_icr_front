@@ -16,6 +16,9 @@ type FormProps = PropsWithChildren<
 
 const Form = (props: FormProps) => {
   const [state, formAction] = useFormState(props.action, { error: null })
+  if (state.success) {
+    setTimeout(() => window.location.reload(), 3000)
+  }
   return (
     <form
       {...props}

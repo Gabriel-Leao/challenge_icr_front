@@ -57,7 +57,7 @@ const Favorites = async () => {
   return (
     <div className="container mx-auto">
       {favorites.length ? (
-        <div className="grid w-full pb-20 gap-x-20 gap-y-14 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        <div className="grid w-full pb-20 gap-x-20 gap-y-14 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 place-content-center">
           {favorites.map(({ id: favoriteId, books: book }) => (
             <div
               key={book!.id}
