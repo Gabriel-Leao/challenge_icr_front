@@ -15,12 +15,12 @@ const SearchForm = () => {
         type="text"
         name="q"
         defaultValue={searchTerm}
-        className="rounded-xl border-white p-2 transition-colors delay-100 focus:bg-burntSienna focus:text-white xl:w-[280px] 2xl:w-[519px] w-[230px] focus:placeholder-white lg:w-full h-[46px] sm:w-full outline-none"
+        className="rounded-xl border-white p-2 transition-colors delay-100 focus:bg-sienna focus:text-white xl:w-[280px] 2xl:w-[519px] w-[230px] focus:placeholder-white lg:w-full h-[46px] sm:w-full outline-none"
         placeholder="Pesquisar por título"
       />
       <SubmitButton
         type="submit"
-        className="bg-[#E25B45] p-2 rounded-2xl">
+        className="bg-sienna p-2 rounded-2xl">
         <SearchIcon />
       </SubmitButton>
     </form>

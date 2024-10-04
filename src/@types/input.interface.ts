@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, InputHTMLAttributes } from 'react'
 
-interface MaskedInputProps extends InputHTMLAttributes<HTMLInputElement> {
+type MaskedInputProps = InputHTMLAttributes<HTMLInputElement> & {
   mask?: string
   label: string
 }

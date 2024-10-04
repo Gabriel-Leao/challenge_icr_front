@@ -4,10 +4,10 @@ import { cookies } from 'next/headers'
 import NoAccount from '@/components/NoAccount'
 import ProfileInput from '@/components/ProfileInput'
 import ProfileChangeIcon from '@/components/Svgs/ProfileChangeIcon'
-import { redirect } from 'next/navigation'
 import Form from '@/components/Form'
 import SubmitButton from '@/components/SubmitButton'
 import ProfileInputWithMask from '@/components/ProfileInput/ProfileInputWithMask'
+import { editUser } from '@/actions'
 
 const getUser = async (access_token: string) => {
   try {
@@ -26,36 +26,7 @@ const Profile = async () => {
   const access_token = cookies().get('access_token')?.value || ''
   const account = await getUser(access_token)
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const editUserAction = async (prevState: any, formData: FormData) => {
-    'use server'
-    const name = formData.get('name')
-    const email = formData.get('email')
-    const password = formData.get('password')
-    const birthday = formData.get('birthday')
-
-    if (account) {
-      const response = await fetch(
-        `${process.env.BACK_URL}/user/${account?.id}`,
-        {
-          method: 'PUT',
-          headers: {
-            Authorization: `Bearer ${access_token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ name, email, password, birthday })
-        }
-      )
-      const data = await response.json()
-      if (!data.error) {
-        return data
-      } else {
-        return data
-      }
-    } else {
-      redirect('login')
-    }
-  }
+  const updateUser = editUser.bind(null, account?.id, access_token)
 
   return (
     <div className="container mx-auto md:max-w-[80%] pb-20">
@@ -71,7 +42,7 @@ const Profile = async () => {
               <div>
                 <Form
                   className="flex flex-col items-center gap-y-3 pb-10"
-                  action={editUserAction}>
+                  action={updateUser}>
                   <ProfileInput
                     id="name"
                     label="Name:"
@@ -107,7 +78,7 @@ const Profile = async () => {
 
                   <SubmitButton
                     type="submit"
-                    className="bg-[#5CC5DB] p-2 rounded-[10px] max-w-[95%] h-[54px] w-[332px] mx-auto">
+                    className="bg-lightBlue p-2 rounded-[10px] max-w-[95%] h-[54px] w-[332px] mx-auto">
                     Atualizar
                   </SubmitButton>
                 </Form>

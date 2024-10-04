@@ -4,7 +4,7 @@ const SidebarButton = ({ fill = `#fff`, className }: iconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="bg-[#2BBAA5] rounded-full w-[50px] lg:w-[70px]"
+      className="bg-teal rounded-full w-[50px] lg:w-[70px]"
       viewBox="0 0 100 100">
       <rect
         fill="#2BBAA5"

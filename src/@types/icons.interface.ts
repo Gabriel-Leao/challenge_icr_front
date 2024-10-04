@@ -1,4 +1,4 @@
-export interface iconProps {
+export type iconProps = {
   fill?: string
   className?: string
   width?: number

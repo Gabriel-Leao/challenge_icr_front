@@ -7,7 +7,7 @@ import RealTechIcon from '../Svgs/RealTechIcon'
 
 const Footer = () => {
   return (
-    <footer className="relative bottom-0 w-full bg-cerulean">
+    <footer className="relative bottom-0 w-full bg-skyBlue">
       <div className="container mx-auto flex w-[95%] flex-col-reverse items-center justify-between gap-y-4 py-4 sm:flex-row sm:gap-y-0">
         <ul>
           <li>

@@ -26,11 +26,12 @@ const Navbar = () => {
         <SidebarButton />
       </div>
       <ul
-        className={`bg-[#fff] rounded-b-xl md:rounded-full flex justify-center w-full md:w-[50px] lg:w-[70px] md:flex-col items-center md:mt-5 gap-5 lg:gap-8 p-4 ease-in duration-500 ${showNav ? 'opacity-100' : 'md:opacity-0'} transition-opacity ease-in-out delay-150 duration-300`}>
+        className={`bg-white rounded-b-xl md:rounded-full flex justify-center w-full md:w-[50px] lg:w-[70px] md:flex-col items-center md:mt-5 gap-5 lg:gap-8 p-4 ease-in duration-500 ${showNav ? 'opacity-100' : 'md:opacity-0'} transition-opacity ease-in-out delay-150 duration-300`}>
         <li>
           <Link
             href="/profile"
-            className="cursor-pointer">
+            className="cursor-pointer"
+            title="perfil">
             <ProfileIcon
               className="w-[22px] lg:w-[39px]"
               shadow={pathname === '/profile'}
@@ -41,7 +42,8 @@ const Navbar = () => {
         <li>
           <Link
             href="/home"
-            className="cursor-pointer">
+            className="cursor-pointer"
+            title="home">
             <HomeIcon
               className="w-[22px] lg:w-[39px]"
               shadow={pathname === '/home'}
@@ -52,7 +54,8 @@ const Navbar = () => {
         <li>
           <Link
             href="/books"
-            className="cursor-pointer">
+            className="cursor-pointer"
+            title="livros">
             <BookIcon
               className="w-[22px] lg:w-[39px]"
               shadow={pathname === '/books'}
@@ -63,7 +66,8 @@ const Navbar = () => {
         <li>
           <Link
             href="/favorites"
-            className="cursor-pointer">
+            className="cursor-pointer"
+            title="favoritos">
             <FavoritesIcon
               className="w-[22px] lg:w-[39px]"
               shadow={pathname === '/favorites'}
@@ -74,7 +78,8 @@ const Navbar = () => {
         <li>
           <Link
             href="/settings"
-            className="cursor-pointer">
+            className="cursor-pointer"
+            title="configurações">
             <SettingIcon
               className="w-[22px] lg:w-[39px]"
               shadow={pathname === '/settings'}

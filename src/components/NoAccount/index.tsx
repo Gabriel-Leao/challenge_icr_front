@@ -14,7 +14,7 @@ const NoAccount = ({
         não tem login?{' '}
         <Link
           href="/signup"
-          className="underline text text-[#000AFF] uppercase">
+          className="underline text-vividBlue uppercase">
           clique aqui!
         </Link>
       </p>
@@ -23,7 +23,7 @@ const NoAccount = ({
         já tem login?{' '}
         <Link
           href="/login"
-          className="underline text-[#000AFF] uppercase">
+          className="underline text-vividBlue uppercase">
           clique aqui!
         </Link>
       </p>

@@ -3,7 +3,7 @@ import parseJwt from '@/common/parseJwt'
 import { cookies } from 'next/headers'
 import BookCover from '@/components/BookCover'
 import FillHeartIcon from '@/components/Svgs/FillHeartIcon'
-import { redirect } from 'next/navigation'
+import { removeFavorite } from '@/actions'
 
 const getFavorites = async (userId: string) => {
   return prisma.favorites.findMany({
@@ -25,31 +25,6 @@ const getFavorites = async (userId: string) => {
   })
 }
 
-const removeAction = async (favoriteId: string) => {
-  'use server'
-  try {
-    if (!favoriteId) throw new Error('Favorito não encontrado')
-    const favorite = await prisma.favorites.findUnique({
-      where: {
-        id: favoriteId
-      }
-    })
-
-    if (!favorite) {
-      throw new Error('Favorito não encontrado')
-    }
-
-    await prisma.favorites.delete({
-      where: {
-        id: favoriteId
-      }
-    })
-  } catch (error) {
-    redirect('/login')
-  }
-  redirect('/favorites')
-}
-
 const Favorites = async () => {
   const account = await parseJwt(cookies().get('access_token')?.value)
   const favorites = await getFavorites((account && account.id) || '')
@@ -66,7 +41,7 @@ const Favorites = async () => {
               <form
                 action={async () => {
                   'use server'
-                  await removeAction(favoriteId)
+                  await removeFavorite(favoriteId, 'favorites')
                 }}>
                 <button
                   className="flex items-center pt-5 gap-3"

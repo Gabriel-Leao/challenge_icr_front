@@ -7,23 +7,12 @@ import SignOut from '../../../components/Svgs/SignOut'
 import NoAccount from '../../../components/NoAccount'
 import parseJwt from '@/common/parseJwt'
 import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
-import prisma from '../../../../prisma/prisma'
+import { logout, removeAllFavorites } from '@/actions'
 
 const Settings = async () => {
   const account = (await parseJwt(cookies().get('access_token')?.value)) || ''
+  const resetFavorites = removeAllFavorites.bind(null, account.id)
 
-  const removeSession = async () => {
-    'use server'
-    cookies().delete('access_token')
-    redirect('/settings')
-  }
-
-  const resetFavorites = async () => {
-    'use server'
-    await prisma.favorites.deleteMany({ where: { user_id: account.id } })
-    redirect('/books')
-  }
   return (
     <>
       {!account ? (
@@ -53,7 +42,7 @@ const Settings = async () => {
               text="aumentar fonte"
             />
 
-            <form action={removeSession}>
+            <form action={logout}>
               <button className="flex items-center gap-x-3 opacity-70 delay-200 ease-in min-h-[100px] rounded-r-[60px] rounded-l-[60px] max-w-[95%] w-[528px] hover:opacity-100 md:mx-auto md:gap-x-7">
                 <div className="flex items-center justify-center rounded-full bg-white min-h-[100px] w-[85px] md:w-[100px]">
                   <SignOut />

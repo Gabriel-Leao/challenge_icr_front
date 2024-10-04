@@ -41,7 +41,7 @@ const Home = async () => {
                 Para acessar todas as funções da biblioteca realize o{' '}
                 <Link
                   href="/login"
-                  className="underline text-[#000AFF]">
+                  className="underline text-vividBlue">
                   login!
                 </Link>
               </p>
@@ -49,7 +49,7 @@ const Home = async () => {
                 Não tem login? Fácil,{' '}
                 <Link
                   href="/signup"
-                  className="underline text-[#000AFF]">
+                  className="underline text-vividBlue">
                   cadastre-se!
                 </Link>
               </p>
@@ -61,12 +61,12 @@ const Home = async () => {
           {!account && (
             <div className="mb-10 flex justify-between gap-x-3 lg:gap-x-10">
               <Link href="/login">
-                <button className="bg-[#E25B45] text-white py-2 px-6 capitalize rounded-md md:rounded-l-md text-xl">
+                <button className="bg-sienna text-white py-2 px-6 capitalize rounded-md md:rounded-l-md text-xl">
                   login
                 </button>
               </Link>
               <Link href="/signup">
-                <button className="bg-[#E25B45] text-white py-2 px-6 capitalize rounded-md md:rounded-r-md text-xl">
+                <button className="bg-sienna text-white py-2 px-6 capitalize rounded-md md:rounded-r-md text-xl">
                   cadastro
                 </button>
               </Link>

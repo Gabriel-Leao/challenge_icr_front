@@ -27,7 +27,7 @@ const ProfileInputWithMask = ({
           placeholder={placeholder}
           name={id}
           mask={mask || ''}
-          className="w-[100%] bg-[#E7E7E7] h-[30px] md:h-[58px] placeholder:text-lg p-4 placeholder:text-[#5F5F5F] max-w-[552px] text-[#5F5F5F]"
+          className="w-[100%] bg-offWhite h-[30px] md:h-[58px] placeholder:text-lg p-4 placeholder:text-slateGray max-w-[552px] text-slateGray"
         />
       </div>
     </div>
