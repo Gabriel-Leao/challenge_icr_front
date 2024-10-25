@@ -4,6 +4,7 @@ import Form from '@/components/Form'
 import SubmitButton from '@/components/SubmitButton'
 import InputWithMask from '@/components/Input/InputWithMask'
 import { createUser } from '@/actions'
+import { routes } from '@/common/consts'
 
 const Signup = () => {
   const createAccount = createUser.bind(null)
@@ -54,13 +55,13 @@ const Signup = () => {
 
         <SubmitButton
           type="submit"
-          className="bg-lightBlue p-2 text-center rounded-[10px] w-[201px] h-[54px] mt-4">
+          className="bg-lightBlue p-2 text-center rounded-[10px] w-[201px] h-[64px] mt-4">
           Cadastrar
         </SubmitButton>
       </Form>
-      <p className="text-center uppercase">já tem login?</p>
+      <p className="text-center uppercase">já tem uma conta?</p>
       <Link
-        href="/login"
+        href={routes.ENTRAR}
         className="underline text-vividBlue text-center uppercase block pb-1">
         clique aqui!
       </Link>

@@ -5,6 +5,8 @@ import { Book } from '@/@types/book.interface'
 import { removeFavorite, saveFavorite } from '@/actions'
 import prisma from '../../../prisma/prisma'
 import { redirect } from 'next/navigation'
+import SubmitButton from '@/components/SubmitButton'
+import { routes } from '@/common/consts'
 
 interface bookResumeProps {
   userId?: string
@@ -14,7 +16,7 @@ interface bookResumeProps {
 
 const getFavoriteByBookId = async (bookId: string, userId: string) => {
   if (!userId) {
-    redirect('/login')
+    redirect(routes.ENTRAR)
   }
   return prisma.favorites.findFirst({
     where: {
@@ -31,7 +33,7 @@ const BookResume = async ({ book, userId }: bookResumeProps) => {
   const favorite = await getFavoriteByBookId(book.id, userId!)
 
   const addFavorite = saveFavorite.bind(null, userId!, book.id)
-  const deleteFavorite = removeFavorite.bind(null, favorite?.id, 'books')
+  const deleteFavorite = removeFavorite.bind(null, favorite?.id, routes.LIVROS)
 
   return (
     <div className="relative mx-auto flex h-fit flex-col gap-y-4 sm:items-center lg:flex-row lg:items-start lg:gap-x-4 xl:gap-x-9">
@@ -49,7 +51,7 @@ const BookResume = async ({ book, userId }: bookResumeProps) => {
           </p>
         </div>
         <form action={favorite ? deleteFavorite : addFavorite}>
-          <button
+          <SubmitButton
             className="bottom-0 flex items-center gap-3 mx-auto cursor-pointer lg:absolute"
             type="submit">
             {favorite ? (
@@ -63,7 +65,7 @@ const BookResume = async ({ book, userId }: bookResumeProps) => {
                 <span className="text-2xl font-bold text-white">salvar</span>
               </>
             )}
-          </button>
+          </SubmitButton>
         </form>
       </div>
     </div>

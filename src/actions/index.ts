@@ -4,6 +4,7 @@ import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import prisma from '../../prisma/prisma'
 import { revalidatePath } from 'next/cache'
+import { routes } from '@/common/consts'
 
 export const login = async (prevState: unknown, formData: FormData) => {
   const email = formData.get('email')
@@ -24,7 +25,7 @@ export const login = async (prevState: unknown, formData: FormData) => {
     cookies().set('access_token', access_token, {
       httpOnly: true
     })
-    redirect('/home')
+    redirect(routes.HOME)
   } else {
     return data
   }
@@ -58,7 +59,7 @@ export const createUser = async (prevState: unknown, formData: FormData) => {
     cookies().set('access_token', access_token, {
       httpOnly: true
     })
-    redirect('/home')
+    redirect(routes.HOME)
   } else {
     return data
   }
@@ -86,19 +87,19 @@ export const removeFavorite = async (
       }
     })
   } catch (error) {
-    redirect('/login')
+    redirect(routes.ENTRAR)
   }
   revalidatePath(path)
 }
 
 export const logout = async () => {
   cookies().delete('access_token')
-  revalidatePath('/settings')
+  revalidatePath(routes.CONFIGURACOES)
 }
 
 export const removeAllFavorites = async (id: string) => {
   await prisma.favorites.deleteMany({ where: { user_id: id } })
-  redirect('/books')
+  redirect(routes.LIVROS)
 }
 
 export const saveFavorite = async (userId: string, bookId: string) => {
@@ -128,9 +129,9 @@ export const saveFavorite = async (userId: string, bookId: string) => {
       }
     })
   } catch (error) {
-    redirect('/login')
+    redirect(routes.ENTRAR)
   }
-  revalidatePath('/books')
+  revalidatePath(routes.LIVROS)
 }
 
 export const editUser = async (
@@ -161,6 +162,6 @@ export const editUser = async (
       return data
     }
   } else {
-    redirect('login')
+    redirect(routes.ENTRAR)
   }
 }

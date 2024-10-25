@@ -78,7 +78,7 @@ const Profile = async () => {
 
                   <SubmitButton
                     type="submit"
-                    className="bg-lightBlue p-2 rounded-[10px] max-w-[95%] h-[54px] w-[332px] mx-auto">
+                    className="bg-lightBlue p-2 rounded-[10px] max-w-[95%] h-[64px] w-[332px] mx-auto">
                     Atualizar
                   </SubmitButton>
                 </Form>

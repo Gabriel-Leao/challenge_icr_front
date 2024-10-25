@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { routes } from '@/common/consts'
 
 const NoAccount = ({
   title = 'Você precisa logar para acessar o seu perfil'
@@ -11,18 +12,18 @@ const NoAccount = ({
         {title}
       </h1>
       <p className="pb-4 text-center uppercase">
-        não tem login?{' '}
+        não tem conta?{' '}
         <Link
-          href="/signup"
+          href={routes.CADASTRAR}
           className="underline text-vividBlue uppercase">
           clique aqui!
         </Link>
       </p>
 
       <p className="text-center uppercase">
-        já tem login?{' '}
+        já tem conta?{' '}
         <Link
-          href="/login"
+          href={routes.ENTRAR}
           className="underline text-vividBlue uppercase">
           clique aqui!
         </Link>

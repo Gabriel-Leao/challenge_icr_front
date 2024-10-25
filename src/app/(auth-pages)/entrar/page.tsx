@@ -3,6 +3,7 @@ import Input from '../../../components/Input'
 import Form from '../../../components/Form'
 import SubmitButton from '@/components/SubmitButton'
 import { login } from '@/actions'
+import { routes } from '@/common/consts'
 
 const Login = () => {
   const authenticate = login.bind(null)
@@ -29,15 +30,15 @@ const Login = () => {
 
         <SubmitButton
           type="submit"
-          className="bg-lightBlue p-2 text-center rounded-[10px] w-[201px] h-[54px] mt-4 disabled:opacity-70">
+          className="bg-lightBlue p-2 text-center rounded-[10px] w-[201px] h-[64px] mt-4 disabled:opacity-70">
           Entrar
         </SubmitButton>
       </Form>
 
-      <p className="text-center uppercase">não tem login?</p>
+      <p className="text-center uppercase">não possui uma conta?</p>
       <Link
-        href="/signup"
-        className="underline text-dvividBlue text-center uppercase block pb-1">
+        href={routes.CADASTRAR}
+        className="underline text-vividBlue text-center uppercase block pb-1">
         clique aqui!
       </Link>
     </div>

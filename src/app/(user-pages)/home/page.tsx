@@ -5,6 +5,8 @@ import BookCover from '../../../components/BookCover'
 import prisma from '../../../../prisma/prisma'
 import parseJwt from '@/common/parseJwt'
 import { cookies } from 'next/headers'
+import { routes } from '@/common/consts'
+import Spinner from '@/components/Spinner'
 
 const getBooks = async () => {
   return prisma.books.findMany({
@@ -40,15 +42,15 @@ const Home = async () => {
               <p className="text-sm font-light leading-6 md:text-xl xl:text-3xl">
                 Para acessar todas as funções da biblioteca realize o{' '}
                 <Link
-                  href="/login"
+                  href={routes.ENTRAR}
                   className="underline text-vividBlue">
                   login!
                 </Link>
               </p>
               <p className="text-sm font-light leading-6 md:text-xl xl:text-3xl">
-                Não tem login? Fácil,{' '}
+                Não tem conta? Fácil,{' '}
                 <Link
-                  href="/signup"
+                  href={routes.CONFIGURACOES}
                   className="underline text-vividBlue">
                   cadastre-se!
                 </Link>
@@ -60,12 +62,12 @@ const Home = async () => {
         <div className="flex w-1/2 flex-col items-center max-w-[500px]">
           {!account && (
             <div className="mb-10 flex justify-between gap-x-3 lg:gap-x-10">
-              <Link href="/login">
+              <Link href={routes.ENTRAR}>
                 <button className="bg-sienna text-white py-2 px-6 capitalize rounded-md md:rounded-l-md text-xl">
                   login
                 </button>
               </Link>
-              <Link href="/signup">
+              <Link href={routes.CADASTRAR}>
                 <button className="bg-sienna text-white py-2 px-6 capitalize rounded-md md:rounded-r-md text-xl">
                   cadastro
                 </button>
@@ -85,7 +87,7 @@ const Home = async () => {
             />
           ))
         ) : (
-          <p className="text-xl text-center">carregando...</p>
+          <Spinner />
         )}
       </div>
     </div>

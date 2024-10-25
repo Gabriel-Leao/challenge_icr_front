@@ -4,6 +4,8 @@ import { cookies } from 'next/headers'
 import BookCover from '@/components/BookCover'
 import FillHeartIcon from '@/components/Svgs/FillHeartIcon'
 import { removeFavorite } from '@/actions'
+import { routes } from '@/common/consts'
+import SubmitButton from '@/components/SubmitButton'
 
 const getFavorites = async (userId: string) => {
   return prisma.favorites.findMany({
@@ -41,14 +43,14 @@ const Favorites = async () => {
               <form
                 action={async () => {
                   'use server'
-                  await removeFavorite(favoriteId, 'favorites')
+                  await removeFavorite(favoriteId, routes.FAVORITOS)
                 }}>
-                <button
+                <SubmitButton
                   className="flex items-center pt-5 gap-3"
                   type="submit">
                   <FillHeartIcon />
                   <span className="text-2xl font-bold text-white">salvo</span>
-                </button>
+                </SubmitButton>
               </form>
             </div>
           ))}

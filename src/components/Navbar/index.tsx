@@ -9,6 +9,7 @@ import BookIcon from '../Svgs/BookIcon'
 import FavoritesIcon from '../Svgs/FavoritesIcon'
 import SidebarButton from '../Svgs/SidebarButton'
 import { useState } from 'react'
+import { routes } from '@/common/consts'
 
 const Navbar = () => {
   const pathname = usePathname()
@@ -29,60 +30,60 @@ const Navbar = () => {
         className={`bg-white rounded-b-xl md:rounded-full flex justify-center w-full md:w-[50px] lg:w-[70px] md:flex-col items-center md:mt-5 gap-5 lg:gap-8 p-4 ease-in duration-500 ${showNav ? 'opacity-100' : 'md:opacity-0'} transition-opacity ease-in-out delay-150 duration-300`}>
         <li>
           <Link
-            href="/profile"
+            href={routes.PERFIL}
             className="cursor-pointer"
             title="perfil">
             <ProfileIcon
               className="w-[22px] lg:w-[39px]"
-              shadow={pathname === '/profile'}
+              shadow={pathname === routes.PERFIL}
             />
           </Link>
         </li>
 
         <li>
           <Link
-            href="/home"
+            href={routes.HOME}
             className="cursor-pointer"
             title="home">
             <HomeIcon
               className="w-[22px] lg:w-[39px]"
-              shadow={pathname === '/home'}
+              shadow={pathname === routes.HOME}
             />
           </Link>
         </li>
 
         <li>
           <Link
-            href="/books"
+            href={routes.LIVROS}
             className="cursor-pointer"
             title="livros">
             <BookIcon
               className="w-[22px] lg:w-[39px]"
-              shadow={pathname === '/books'}
+              shadow={pathname === routes.LIVROS}
             />
           </Link>
         </li>
 
         <li>
           <Link
-            href="/favorites"
+            href={routes.FAVORITOS}
             className="cursor-pointer"
             title="favoritos">
             <FavoritesIcon
               className="w-[22px] lg:w-[39px]"
-              shadow={pathname === '/favorites'}
+              shadow={pathname === routes.FAVORITOS}
             />
           </Link>
         </li>
 
         <li>
           <Link
-            href="/settings"
+            href={routes.CONFIGURACOES}
             className="cursor-pointer"
             title="configurações">
             <SettingIcon
               className="w-[22px] lg:w-[39px]"
-              shadow={pathname === '/settings'}
+              shadow={pathname === routes.CONFIGURACOES}
             />
           </Link>
         </li>

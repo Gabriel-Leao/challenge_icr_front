@@ -3,13 +3,14 @@
 import { useSearchParams } from 'next/navigation'
 import SubmitButton from '@/components/SubmitButton'
 import SearchIcon from '@/components/Svgs/SearchIcon'
+import { routes } from '@/common/consts'
 
 const SearchForm = () => {
   const searchParams = useSearchParams()
   const searchTerm = searchParams.get('q') || ''
   return (
     <form
-      action="/books"
+      action={routes.LIVROS}
       className="flex items-center gap-2 mb-8 right-0 xl:absolute w-full xl:w-fit justify-center">
       <input
         type="text"

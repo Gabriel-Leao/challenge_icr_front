@@ -1,17 +1,18 @@
 import Link from 'next/link'
 import defaultImg from '/public/default_img.png'
 import Image from 'next/image'
+import { routes } from '@/common/consts'
 
 const getHistoryLink = (cover: string) => {
   switch (cover) {
     case 'https://i.ibb.co/RH09DfY/Captura-de-tela-de-2024-05-21-18-18-06.png':
-      return '/historias/raio-x'
+      return routes.RAIOX
     case 'https://i.ibb.co/qrFcfWL/Captura-de-tela-de-2024-05-21-18-17-32.png':
-      return '/historias/hemodialise'
+      return routes.HEMODIALISE
     case 'https://i.ibb.co/2SwwCtK/Captura-de-tela-de-2024-05-21-18-18-24.png':
-      return 'historias/sangue'
+      return routes.SANGUE
     default:
-      return '/historias'
+      return routes.HISTORIAS
   }
 }
 

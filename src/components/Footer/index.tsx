@@ -4,6 +4,7 @@ import WhatsappIcon from '../Svgs/WhatsappIcon'
 import PhoneIcon from '../Svgs/PhoneIcon'
 import MailIcon from '../Svgs/MailIcon'
 import RealTechIcon from '../Svgs/RealTechIcon'
+import { routes } from '@/common/consts'
 
 const Footer = () => {
   return (
@@ -48,7 +49,7 @@ const Footer = () => {
         </ul>
 
         <div className="cursor-pointer">
-          <Link href="/home">
+          <Link href={routes.HOME}>
             <RealTechIcon
               width={70}
               height={70}
