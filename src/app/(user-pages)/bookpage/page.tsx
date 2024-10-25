@@ -6,19 +6,18 @@ import RightArrowIcon from '../../../components/Svgs/RightArrowIcon'
 const BookPage = () => {
   return (
     <div className="relative w-full bg-sienna flex items-center justify-center">
-      <button className="bg-mintGreen p-5 rounded-l-[80px] absolute md:static z-10 left-0">
-        <LeftArrowIcon />
-      </button>
+      
       <div className="relative max-h-fit min-h-screen bg-white md:w-[80%] xl:w-1/2">
-        <Link href="/puzzle">
-          <button className="text-white bg-deepRed rounded-[68px] py-4 px-5 text-lg  md:absolute right-14 top-14">
-            BOTÃO DE INTERAÇÃO EXEMPLO
-          </button>
-        </Link>
+          <div className="relative w-full flex items-center justify-center">
+            <iframe width="609" height="850" src="https://embed.figma.com/proto/tkTJb4iU0aa1fx0h3DSwXD/Hemodi%C3%A1lise?node-id=1-2&node-type=canvas&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&embed-host=share" allowFullScreen></iframe>
+          </div>
+          <div className="relative w-full flex items-center justify-center">
+            <iframe width="609" height="850" src="https://embed.figma.com/proto/NofcuCcG7bRZr2wN2iixqP/Exame-de-Sangue?node-id=1-2&node-type=canvas&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&embed-host=share" allowFullScreen></iframe>
+          </div>
+          <div className="relative w-auto flex items-center justify-center">
+          <iframe width="609" height="850" src="https://embed.figma.com/proto/ORhch2zJbBJVx12008XNhB/Raio-X?node-id=1-2&node-type=canvas&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&embed-host=share" allowFullScreen></iframe>
+          </div>          
       </div>
-      <button className="bg-mintGreen p-5 rounded-r-[80px] absolute md:static z-10 right-0">
-        <RightArrowIcon />
-      </button>
     </div>
   )
 }
