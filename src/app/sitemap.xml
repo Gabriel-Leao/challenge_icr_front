@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset>
+<url>
+  <loc>https://challenge-icr-front.vercel.app/home</loc>
+  <lastmod>2024-10-25T21:43:04+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://challenge-icr-front.vercel.app/perfil</loc>
+  <lastmod>2024-10-25T21:43:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://challenge-icr-front.vercel.app/entrar</loc>
+  <lastmod>2024-10-25T21:43:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://challenge-icr-front.vercel.app/favoritos</loc>
+  <lastmod>2024-10-25T21:43:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://challenge-icr-front.vercel.app/configuracoes</loc>
+  <lastmod>2024-10-25T21:43:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://challenge-icr-front.vercel.app/cadastrar</loc>
+  <lastmod>2024-10-25T21:43:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://challenge-icr-front.vercel.app/historias/raio-x</loc>
+  <lastmod>2024-10-25T21:43:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://challenge-icr-front.vercel.app/historias/hemodialise</loc>
+  <lastmod>2024-10-25T21:43:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://challenge-icr-front.vercel.app/historias/sangue</loc>
+  <lastmod>2024-10-25T21:43:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://challenge-icr-front.vercel.app/livros</loc>
+  <lastmod>2024-10-25T21:43:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://challenge-icr-front.vercel.app/historias</loc>
+  <lastmod>2024-10-25T21:43:04+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+</urlset>
