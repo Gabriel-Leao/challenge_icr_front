@@ -8,7 +8,10 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'MedEduca',
-  description: 'Biblioteca virtual medEduca'
+  description: 'Biblioteca virtual medEduca',
+  verification: {
+    google: 'yNRqpT2pjXomYTBAWXz_1ZCPH5ld2j4MtPgnOMwCZ9c'
+  }
 }
 
 export default function RootLayout({
