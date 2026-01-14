@@ -17,7 +17,7 @@ const ErrorComponent = ({ title, subTitle }: ErrorComponentProps) => {
   }
 
   return (
-    <div className="bg-[#8CDAE5] w-full grid grid-cols-1 gap-9 lg:grid-cols-2">
+    <div className="bg-[#56A8B2] w-full grid grid-cols-1 gap-9 lg:grid-cols-2">
       <div className="bg-[#56A8B2] gap-9 flex flex-col items-center py-20 text-center lg:h-screen lg:py-0 justify-center">
         {title && <h1 className="text-4xl xl:text-6xl">{title}</h1>}
         <AlertIcon />

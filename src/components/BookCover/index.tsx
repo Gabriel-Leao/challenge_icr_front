@@ -17,12 +17,14 @@ const getHistoryLink = (cover: string) => {
 }
 
 const BookCover = ({ cover }: { cover?: string | null }) => {
+  console.log('capa: ', cover)
+
   return (
     <>
       <Link href={getHistoryLink(cover!)}>
         <Image
           src={cover || defaultImg}
-          alt="Capa padrãoo"
+          alt="Capa padrão"
           className="h-[499px] sm:w-[334px]"
           width={334}
           height={499}
